@@ -3,7 +3,6 @@ package com.dev.nereya.ui_game_project
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -13,7 +12,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.bumptech.glide.Glide
 import com.dev.nereya.ui_game_project.utils.Constants
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-import model.GameManager
+import com.dev.nereya.ui_game_project.model.GameManager
 
 
 class MainActivity : AppCompatActivity() {
