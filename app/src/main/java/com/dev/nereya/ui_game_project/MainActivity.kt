@@ -13,10 +13,12 @@ import com.bumptech.glide.Glide
 import com.dev.nereya.ui_game_project.utils.Constants
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.dev.nereya.ui_game_project.model.GameManager
+import com.dev.nereya.ui_game_project.utils.AsteroidState
 
 
 class MainActivity : AppCompatActivity() {
     private lateinit var main_BG_pic: AppCompatImageView
+    private lateinit var main_hearts: Array<AppCompatImageView>
     private lateinit var main_FAB_left: ExtendedFloatingActionButton
     private lateinit var main_FAB_right: ExtendedFloatingActionButton
 
@@ -27,31 +29,32 @@ class MainActivity : AppCompatActivity() {
 
 
     val runnable: Runnable = object : Runnable {
-        var col_index = 0
-        var row_start = 0
 
+        val asteroid1 = AsteroidState(rowStart = 0, colIndex = 0)
+        val asteroid2 = AsteroidState(rowStart = 2, colIndex = 2)
         override fun run() {
-            handler.postDelayed(this, Constants.Timer.DELAY)
+            moveSingleAsteroid(asteroid1)
+            moveSingleAsteroid(asteroid2)
 
-            updateAsteroidPosition()
+            gameManager.checkCollision(asteroid1, main_spaceships, main_hearts)
+            gameManager.checkCollision(asteroid2, main_spaceships, main_hearts)
+
+            if (gameManager.isGameEnded) {
+                handler.removeCallbacks(this)
+
+                // Optional: Show "Game Over" Toast or Screen here
+            } else {
+                // Keep looping if game is not over
+                handler.postDelayed(this, Constants.Timer.DELAY)
+            }
         }
 
-        private fun updateAsteroidPosition() {
-            var globalIndex = row_start + col_index
+        private fun moveSingleAsteroid(state: AsteroidState) {
+            main_asteroids[state.currentPosition].visibility = View.INVISIBLE
 
-            main_asteroids[globalIndex].visibility = View.INVISIBLE
+            state.moveForward()
 
-            col_index++
-
-            if (col_index > 4) {
-                col_index = 0
-
-                row_start = (0..2).random() * 5
-            }
-
-            globalIndex = row_start + col_index
-
-            main_asteroids[globalIndex].visibility = View.VISIBLE
+            main_asteroids[state.currentPosition].visibility = View.VISIBLE
         }
     }
     var gameManager: GameManager = GameManager()
@@ -75,12 +78,15 @@ class MainActivity : AppCompatActivity() {
         main_BG_pic = findViewById(R.id.main_BG_pic)
         main_FAB_left = findViewById(R.id.main_FAB_left)
         main_FAB_right = findViewById(R.id.main_FAB_right)
+        main_hearts = arrayOf(
+            findViewById(R.id.main_IMG_heart0),
+            findViewById(R.id.main_IMG_heart1),
+            findViewById(R.id.main_IMG_heart2)
+        )
         main_spaceships = arrayOf(
             findViewById(R.id.main_spaceship0),
             findViewById(R.id.main_spaceship1),
-            findViewById(R.id.main_spaceship2),
-            findViewById(R.id.main_spaceship3),
-            findViewById(R.id.main_spaceship4)
+            findViewById(R.id.main_spaceship2)
         )
         main_asteroids = arrayOf(
             findViewById(R.id.main_asteroid0_0),

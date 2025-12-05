@@ -242,20 +242,6 @@
             android:layout_weight="1"
             android:visibility="invisible"
             app:srcCompat="@drawable/spaceship_foreground" />
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/main_spaceship3"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0"
-            app:srcCompat="@drawable/spaceship_foreground" />
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/main_spaceship4"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0"
-            app:srcCompat="@drawable/spaceship_foreground" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
