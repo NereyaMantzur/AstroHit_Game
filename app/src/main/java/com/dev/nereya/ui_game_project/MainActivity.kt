@@ -14,6 +14,7 @@ import com.dev.nereya.ui_game_project.utils.Constants
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.dev.nereya.ui_game_project.model.GameManager
 import com.dev.nereya.ui_game_project.utils.AsteroidState
+import com.dev.nereya.ui_game_project.utils.SignalManager
 
 
 class MainActivity : AppCompatActivity() {
@@ -21,44 +22,55 @@ class MainActivity : AppCompatActivity() {
     private lateinit var main_hearts: Array<AppCompatImageView>
     private lateinit var main_FAB_left: ExtendedFloatingActionButton
     private lateinit var main_FAB_right: ExtendedFloatingActionButton
-
     private lateinit var main_spaceships: Array<AppCompatImageView>
-
     private lateinit var main_asteroids: Array<AppCompatImageView>
     private val handler: Handler = Handler(Looper.getMainLooper())
-
+    val asteroids: Array<AsteroidState> = arrayOf(
+        AsteroidState(0, (-3..-1).random()),
+        AsteroidState(5, (-3..-1).random())
+    )
 
     val runnable: Runnable = object : Runnable {
-
-        val asteroid1 = AsteroidState(rowStart = 0, colIndex = 0)
-        val asteroid2 = AsteroidState(rowStart = 2, colIndex = 2)
         override fun run() {
-            moveSingleAsteroid(asteroid1)
-            moveSingleAsteroid(asteroid2)
+            moveAsteroids(asteroids)
 
-            gameManager.checkCollision(asteroid1, main_spaceships, main_hearts)
-            gameManager.checkCollision(asteroid2, main_spaceships, main_hearts)
+            gameManager.checkCollision(asteroids[0], main_spaceships, main_hearts)
+            gameManager.checkCollision(asteroids[1], main_spaceships, main_hearts)
 
             if (gameManager.isGameEnded) {
                 handler.removeCallbacks(this)
-
-                // Optional: Show "Game Over" Toast or Screen here
+                SignalManager.getInstance(this@MainActivity).toast("GAME OVER")
+                changeActivity()
             } else {
                 // Keep looping if game is not over
                 handler.postDelayed(this, Constants.Timer.DELAY)
             }
         }
 
-        private fun moveSingleAsteroid(state: AsteroidState) {
-            main_asteroids[state.currentPosition].visibility = View.INVISIBLE
-
-            state.moveForward()
-
-            main_asteroids[state.currentPosition].visibility = View.VISIBLE
+        private fun moveAsteroids(states: Array<AsteroidState>) {
+            for (state in states) {
+                if (state.colIndex in 0..4) {
+                    main_asteroids[state.currentPosition].visibility = View.INVISIBLE
+                }
+            }
+            for (state in states) {
+                state.moveForward()
+            }
+            for (i in states.indices) {
+                for (j in i + 1 until states.size) {
+                    if (states[i].currentPosition == states[j].currentPosition) {
+                        states[i].colIndex++
+                    }
+                }
+            }
+            for (state in states) {
+                if (state.colIndex in 0..4) {
+                    main_asteroids[state.currentPosition].visibility = View.VISIBLE
+                }
+            }
         }
     }
     var gameManager: GameManager = GameManager()
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -107,7 +119,6 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
-
     fun initViews() {
         Glide.with(this)
             .load("https://cdn.pixabay.com/animation/2023/07/13/14/22/14-22-36-485_512.gif")
@@ -119,28 +130,25 @@ class MainActivity : AppCompatActivity() {
             gameManager.buttonClicked = true
             refreshUI()
         }
-
         main_FAB_left.setOnClickListener {
             gameManager.buttonClicked = false
             refreshUI()
         }
-
         refreshUI()
     }
 
     fun refreshUI() {
         if (gameManager.isGameEnded) {
-            changeActivity(gameManager.score)
+            changeActivity()
             return
         }
-
         main_spaceships[gameManager.currentShipIndex].visibility = View.INVISIBLE
 
         if (gameManager.buttonClicked) {
             if (gameManager.currentShipIndex < 2) {
                 gameManager.currentShipIndex++
             }
-        } else { // Moving Left
+        } else {
             if (gameManager.currentShipIndex > 0) {
                 gameManager.currentShipIndex--
             }
@@ -148,9 +156,8 @@ class MainActivity : AppCompatActivity() {
         main_spaceships[gameManager.currentShipIndex].visibility = View.VISIBLE
     }
 
-    fun changeActivity(score: Int) {
-        val intent = android.content.Intent(this, ScoreActivity::class.java)
-        intent.putExtra("score", score)
+    fun changeActivity() {
+        val intent = android.content.Intent(this, MainActivity::class.java)
         startActivity(intent)
         finish()
     }
