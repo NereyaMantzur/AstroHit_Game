@@ -33,16 +33,19 @@ class MainActivity : AppCompatActivity() {
     val runnable: Runnable = object : Runnable {
         override fun run() {
             moveAsteroids(asteroids)
+            val hit1 = gameManager.checkCollision(asteroids[0], gameManager.currentShipIndex)
+            val hit2 = gameManager.checkCollision(asteroids[1], gameManager.currentShipIndex)
 
-            gameManager.checkCollision(asteroids[0], main_spaceships, main_hearts)
-            gameManager.checkCollision(asteroids[1], main_spaceships, main_hearts)
-
+            if (hit1 || hit2) {
+                SignalManager.getInstance(this@MainActivity).vibrate()
+                SignalManager.getInstance(this@MainActivity).toast("OUCH")
+                updateHeartsUI()
+            }
             if (gameManager.isGameEnded) {
                 handler.removeCallbacks(this)
                 SignalManager.getInstance(this@MainActivity).toast("GAME OVER")
                 changeActivity()
             } else {
-                // Keep looping if game is not over
                 handler.postDelayed(this, Constants.Timer.DELAY)
             }
         }
@@ -154,6 +157,19 @@ class MainActivity : AppCompatActivity() {
             }
         }
         main_spaceships[gameManager.currentShipIndex].visibility = View.VISIBLE
+    }
+
+    fun updateHeartsUI() {
+        for (i in main_hearts.indices) {
+            // If the index is less than the remaining hearts, show the heart.
+            // Otherwise, hide it.
+            // Example: If hearts = 2, indices 0 and 1 are visible, index 2 is invisible.
+            if (i < gameManager.hearts) {
+                main_hearts[i].visibility = View.VISIBLE
+            } else {
+                main_hearts[i].visibility = View.INVISIBLE
+            }
+        }
     }
 
     fun changeActivity() {

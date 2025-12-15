@@ -1,6 +1,5 @@
 package com.dev.nereya.ui_game_project.model
 
-import android.R
 import android.view.View
 import androidx.appcompat.widget.AppCompatImageView
 import com.dev.nereya.ui_game_project.utils.AsteroidState
@@ -17,24 +16,17 @@ class GameManager(spaceships: Int = 3) {
 
     fun checkCollision(
         state: AsteroidState,
-        spaceships: Array<AppCompatImageView>,
-        heartsArray: Array<AppCompatImageView>
-    ) {
+        shipIndex: Int
+    ): Boolean {
         val shipRowIndex = state.rowStart / 5
-
-        if (state.colIndex == 4 && spaceships[shipRowIndex].visibility == View.VISIBLE) {
-            SignalManager.getInstance(spaceships[shipRowIndex].context).vibrate()
-            SignalManager.getInstance(spaceships[shipRowIndex].context).toast("OUCH")
+        if (state.colIndex == 4 && shipRowIndex == shipIndex) {
             hearts--
             hits++
-
-            if (hearts >= 0) {
-                heartsArray[hearts].visibility = View.INVISIBLE
-            }
-
             if (hearts == 0) {
                 isGameEnded = true
             }
+            return true
         }
+        return false
     }
 }
