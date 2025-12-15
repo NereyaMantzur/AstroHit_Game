@@ -1,14 +1,10 @@
 package com.dev.nereya.ui_game_project.model
 
-import android.view.View
-import androidx.appcompat.widget.AppCompatImageView
 import com.dev.nereya.ui_game_project.utils.AsteroidState
-import com.dev.nereya.ui_game_project.utils.SignalManager
 
-class GameManager(spaceships: Int = 3) {
+class GameManager() {
 
     var isGameEnded: Boolean = false
-    var score: Int = 0
     var buttonClicked: Boolean = true
     var currentShipIndex: Int = 0
     var hits: Int = 0
