@@ -20,10 +20,10 @@ class SignalManager private constructor(context: Context) {
             }
         }
 
-        fun getInstance(context: Context):SignalManager {
-            return instance ?: synchronized(this) {
-                instance ?: SignalManager(context).also { instance = it }
-            }
+        fun getInstance(): SignalManager {
+            return instance ?: throw IllegalStateException(
+                "SignalManager must be initialized by calling init(context) before use."
+            )
         }
     }
 

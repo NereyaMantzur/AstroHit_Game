@@ -37,13 +37,13 @@ class MainActivity : AppCompatActivity() {
             val hit2 = gameManager.checkCollision(asteroids[1], gameManager.currentShipIndex)
 
             if (hit1 || hit2) {
-                SignalManager.getInstance(this@MainActivity).vibrate()
-                SignalManager.getInstance(this@MainActivity).toast("OUCH")
+                SignalManager.getInstance().vibrate()
+                SignalManager.getInstance().toast("OUCH")
                 updateHeartsUI()
             }
             if (gameManager.isGameEnded) {
                 handler.removeCallbacks(this)
-                SignalManager.getInstance(this@MainActivity).toast("GAME OVER")
+                SignalManager.getInstance().toast("GAME OVER")
                 changeActivity()
             } else {
                 handler.postDelayed(this, Constants.Timer.DELAY)
@@ -173,7 +173,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun changeActivity() {
-        val intent = android.content.Intent(this, MainActivity::class.java)
+        val intent = android.content.Intent(this, ScoreActivity::class.java)
         startActivity(intent)
         finish()
     }

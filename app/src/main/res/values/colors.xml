@@ -3,4 +3,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="heartColor">#FD0E00</color>
+    <color name="grey_600">#757575</color>
+    <color name="blueGrey_600">#546E7A</color>
+    <color name="grey_400">#BDBDBD</color>
+    <color name="blueGrey_400">#78909C</color>
 </resources>
