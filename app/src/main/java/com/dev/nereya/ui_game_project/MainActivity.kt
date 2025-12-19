@@ -161,9 +161,6 @@ class MainActivity : AppCompatActivity() {
 
     fun updateHeartsUI() {
         for (i in main_hearts.indices) {
-            // If the index is less than the remaining hearts, show the heart.
-            // Otherwise, hide it.
-            // Example: If hearts = 2, indices 0 and 1 are visible, index 2 is invisible.
             if (i < gameManager.hearts) {
                 main_hearts[i].visibility = View.VISIBLE
             } else {
