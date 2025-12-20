@@ -1,6 +1,7 @@
 package com.dev.nereya.ui_game_project.utils
 
 import android.content.Context
+import androidx.core.content.edit
 
 
 class SharedPreferencesManager private constructor(context: Context) {
@@ -28,9 +29,8 @@ class SharedPreferencesManager private constructor(context: Context) {
     }
 
     fun putString( key: String, value: String){
-        with(sharedPreferences.edit()){
-            putString(key,value)
-            apply()
+        sharedPreferences.edit {
+            putString(key, value)
         }
 
     }

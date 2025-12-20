@@ -4,4 +4,5 @@
     <dimen name="heart_size">40dp</dimen>
     <dimen name="main_BTN_margin">50dp</dimen>
     <dimen name="default_padding">8dp</dimen>
+    <dimen name="highScore_margin">2dp</dimen>
 </resources>

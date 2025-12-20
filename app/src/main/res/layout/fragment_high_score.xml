@@ -1,26 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/grey_400"
+    android:orientation="vertical"
     tools:context=".ui.HighScoreFragment">
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/highScore_ET_text"
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/highScore_text_leaderboard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="text"
-        android:layout_centerInParent="true"
+        android:layout_margin="@dimen/highScore_margin"
+        android:layout_weight="1"
+        android:background="@color/blueGrey_600"
         android:gravity="center"
-        android:hint="TODO" />
+        android:text="@string/leaderboard_title"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textAllCaps="true"
+        android:textColor="@color/black" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/highScore_BTN_send"
-        android:layout_width="wrap_content"
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/highScore_text_1"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/highScore_ET_text"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/default_margin"
-        android:text="send" />
-</RelativeLayout>
+        android:layout_margin="@dimen/highScore_margin"
+        android:layout_weight="1"
+        android:background="@color/blueGrey_400"
+        android:gravity="center"
+        android:text="45,45"
+        android:textColor="@color/black"
+        tools:text="1th place" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/highScore_text_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/highScore_margin"
+        android:layout_weight="1"
+        android:background="@color/blueGrey_400"
+        android:gravity="center"
+        android:textColor="@color/black"
+        tools:text="2th place" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/highScore_text_3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/highScore_margin"
+        android:layout_weight="1"
+        android:background="@color/blueGrey_400"
+        android:gravity="center"
+        android:textColor="@color/black"
+        tools:text="3th place" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/highScore_text_4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/highScore_margin"
+        android:layout_weight="1"
+        android:background="@color/blueGrey_400"
+        android:gravity="center"
+        android:textColor="@color/black"
+        tools:text="4th place" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/highScore_text_5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/highScore_margin"
+        android:layout_weight="1"
+        android:background="@color/blueGrey_400"
+        android:gravity="center"
+        android:textColor="@color/black"
+        tools:text="5th place" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/highScore_text_6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/highScore_margin"
+        android:layout_weight="1"
+        android:background="@color/blueGrey_400"
+        android:gravity="center"
+        android:textColor="@color/black"
+        tools:text="6th place" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/highScore_text_7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/highScore_margin"
+        android:layout_weight="1"
+        android:background="@color/blueGrey_400"
+        android:gravity="center"
+        android:textColor="@color/black"
+        tools:text="7th place" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/highScore_text_8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/highScore_margin"
+        android:layout_weight="1"
+        android:background="@color/blueGrey_400"
+        android:gravity="center"
+        android:textColor="@color/black"
+        tools:text="8th place" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/highScore_text_9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/highScore_margin"
+        android:layout_weight="1"
+        android:background="@color/blueGrey_400"
+        android:gravity="center"
+        android:textColor="@color/black"
+        tools:text="9th place" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/highScore_text_10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/highScore_margin"
+        android:layout_weight="1"
+        android:background="@color/blueGrey_400"
+        android:gravity="center"
+        android:textColor="@color/black"
+        tools:text="10th place" />
+
+
+</LinearLayout>
