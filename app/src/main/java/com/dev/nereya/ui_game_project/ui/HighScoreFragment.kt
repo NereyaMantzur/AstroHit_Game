@@ -40,7 +40,7 @@ class HighScoreFragment : Fragment() {
         val gson = Gson()
         val leaderBoardFromSP: String = SharedPreferencesManager
             .getInstance()
-            .getString(Constants.SP_KEYS.LEADERBOARD_KEY, "")
+            .getString(Constants.SPKeys.LEADERBOARD_KEY, "")
 
         regeneratedLeaderBoard = if (leaderBoardFromSP.isEmpty()) {
             LeaderBoardList()
@@ -61,9 +61,9 @@ class HighScoreFragment : Fragment() {
                     text = "${player.playerName}\t\t\t${player.playerScore}"
 
                     setOnClickListener {
-                        var coordinates = highScoreList?.get(i)?.text?.split(",")
-                        var lat: Double = coordinates?.getOrNull(0)?.toDoubleOrNull() ?: 0.0
-                        var lon: Double = coordinates?.getOrNull(1)?.toDoubleOrNull() ?: 0.0
+                        val coordinates = highScoreList?.get(i)?.text?.split(",")
+                        val lat: Double = coordinates?.getOrNull(0)?.toDoubleOrNull() ?: 0.0
+                        val lon: Double = coordinates?.getOrNull(1)?.toDoubleOrNull() ?: 0.0
 
                         highScoreItemClicked?.highScoreItemClicked(lat, lon)
                     }

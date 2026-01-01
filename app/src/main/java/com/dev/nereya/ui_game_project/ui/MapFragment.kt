@@ -27,7 +27,6 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
         val mapFragment = childFragmentManager.findFragmentById(R.id.map_container) as SupportMapFragment?
         mapFragment?.getMapAsync(this)
-
         mapFragment?.getMapAsync(this)
         return v
 }

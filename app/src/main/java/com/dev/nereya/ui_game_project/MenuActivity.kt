@@ -43,9 +43,9 @@ class MenuActivity : AppCompatActivity() {
     }
 
     private fun initViews() {
-        menu_BTN_slow.setOnClickListener { changeActivity(MainActivity::class.java, Constants.GAME_MODE.SLOW) }
-        menu_BTN_fast.setOnClickListener { changeActivity(MainActivity::class.java, Constants.GAME_MODE.FAST) }
-        menu_BTN_sensor.setOnClickListener { changeActivity(MainActivity::class.java, Constants.GAME_MODE.SENSOR) }
+        menu_BTN_slow.setOnClickListener { changeActivity(MainActivity::class.java, Constants.GameMode.SLOW) }
+        menu_BTN_fast.setOnClickListener { changeActivity(MainActivity::class.java, Constants.GameMode.FAST) }
+        menu_BTN_sensor.setOnClickListener { changeActivity(MainActivity::class.java, Constants.GameMode.SENSOR) }
         menu_BTN_leaderboard.setOnClickListener {
             changeActivity(
                 ScoreActivity::class.java,
@@ -59,7 +59,7 @@ class MenuActivity : AppCompatActivity() {
         val intent = Intent(this, activityClass)
 
         mode?.let {
-            intent.putExtra("GAME_MODE", it)
+            intent.putExtra("GameMode", it)
         }
 
         startActivity(intent)

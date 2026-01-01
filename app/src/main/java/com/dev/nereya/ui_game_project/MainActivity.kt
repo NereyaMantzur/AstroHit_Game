@@ -28,7 +28,6 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var main_spaceships: Array<AppCompatImageView>
     private lateinit var main_asteroidsMatrix: Array<Array<AppCompatImageView>>
-
     private lateinit var gameMode: String
     private val handler: Handler = Handler(Looper.getMainLooper())
 
@@ -65,9 +64,9 @@ class MainActivity : AppCompatActivity() {
                 SignalManager.getInstance().toast("GAME OVER!")
                 changeActivity()
             } else {
-                if (gameMode == Constants.GAME_MODE.SLOW)
+                if (gameMode == Constants.GameMode.SLOW)
                     handler.postDelayed(this, Constants.Timer.DELAY_SLOW)
-                else if (gameMode == Constants.GAME_MODE.FAST)
+                else if (gameMode == Constants.GameMode.FAST)
                     handler.postDelayed(this, Constants.Timer.DELAY_FAST)
                 else(
                     handler.postDelayed(this, Constants.Timer.DELAY_SLOW)
@@ -86,7 +85,7 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        gameMode = intent.getStringExtra("GAME_MODE") ?: "fast"
+        gameMode = intent.getStringExtra("GameMode") ?: "fast"
         findViews()
         initViews()
         handler.postDelayed(runnable, Constants.Timer.DELAY_FAST)
@@ -132,7 +131,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         main_score.text = gameManager.score.toString()
-
         refreshShipUI()
     }
 

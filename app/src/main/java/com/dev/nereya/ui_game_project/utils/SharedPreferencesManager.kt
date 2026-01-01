@@ -6,7 +6,7 @@ import androidx.core.content.edit
 
 class SharedPreferencesManager private constructor(context: Context) {
     private val sharedPreferences = context.getSharedPreferences(
-        Constants.SP_KEYS.DATA_FILE,
+        Constants.SPKeys.DATA_FILE,
         Context.MODE_PRIVATE
     )
 
@@ -32,7 +32,6 @@ class SharedPreferencesManager private constructor(context: Context) {
         sharedPreferences.edit {
             putString(key, value)
         }
-
     }
 
     fun getString( key: String, defaultValue: String): String{
