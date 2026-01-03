@@ -21,7 +21,7 @@ class HighScoreFragment : Fragment() {
     private var highScorePoints: Array<MaterialTextView>? = null
     private var highScoreContainers:Array<CardView>? = null
 
-    private lateinit var LeaderBoard: LeaderBoardList
+    private lateinit var leaderBoard: LeaderBoardList
 
     companion object {
         var highScoreItemClicked: CallbackHighScoreClicked? = null
@@ -45,7 +45,7 @@ class HighScoreFragment : Fragment() {
             .getInstance()
             .getString(Constants.SPKeys.LEADERBOARD_KEY, "")
 
-        LeaderBoard = if (leaderBoardFromSP.isEmpty()) {
+        leaderBoard = if (leaderBoardFromSP.isEmpty()) {
             LeaderBoardList()
         } else {
             gson.fromJson(leaderBoardFromSP, LeaderBoardList::class.java) ?: LeaderBoardList()
@@ -53,7 +53,7 @@ class HighScoreFragment : Fragment() {
     }
 
     private fun initViews() {
-        val dataList = LeaderBoard.leaderBoard.sortedByDescending {
+        val dataList = this@HighScoreFragment.leaderBoard.leaderBoard.sortedByDescending {
             it.playerScore
         }
 
@@ -71,11 +71,11 @@ class HighScoreFragment : Fragment() {
                 }
                 highScoreNames?.get(i)?.apply {
                     visibility = View.VISIBLE
-                    text = "${player.playerName}"
+                    text = player.playerName
                 }
                 highScorePoints?.get(i)?.apply {
                     visibility = View.VISIBLE
-                    text = "${player.playerScore}"
+                    text = player.playerScore.toString()
                 }
             } else {
                 highScoreNames?.get(i)?.visibility = View.INVISIBLE
