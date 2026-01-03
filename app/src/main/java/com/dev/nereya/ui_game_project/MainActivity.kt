@@ -246,7 +246,6 @@ class MainActivity : AppCompatActivity() {
             }
         )
     }
-
     private fun moveShip(direction: Int) {
         if (gameManager.isGameEnded) return
         main_spaceships[gameManager.currentShipIndex].visibility = View.INVISIBLE

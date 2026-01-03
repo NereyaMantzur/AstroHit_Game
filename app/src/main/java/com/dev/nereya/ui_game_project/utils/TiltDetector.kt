@@ -45,7 +45,7 @@ class TiltDetector(context: Context, private val axis: Int, private val tiltCall
             }
 
             if (axis == 1) {
-                if (y >= 7.0) {
+                if (y >= 10.0) {
                     timestamp = System.currentTimeMillis()
                     tiltCallback.tiltY() // Slow Down
                 }
