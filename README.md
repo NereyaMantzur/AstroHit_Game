@@ -43,7 +43,7 @@
 
 | Menu Screen | Gameplay | Leaderboard |
 |:---:|:---:|:---:|
-| ![Menu](docs/menu_screenshot.png) | ![Game](docs/game_screenshot.png) | ![Scores](docs/scores_screenshot.png) |
+| ![Menu](docs/menu_screenshot.jpeg) | ![Game](docs/game_screenshot.jpeg) | ![Scores](docs/scores_screenshot.jpeg) |
 
 *(Note: Replace the paths above with the actual paths to your screenshots)*
 
