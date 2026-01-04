@@ -43,7 +43,7 @@
 
 | Menu Screen | Gameplay | Leaderboard |
 |:---:|:---:|:---:|
-| ![Menu](docs/menu_screenshot.jpeg) | ![Game](docs/game_screenshot.jpeg) | ![Scores](docs/scores_screenshot.jpeg) |
+| ![Menu](docs/menu_screenshot.jpg) | ![Game](docs/game_screenshot.jpg) | ![Scores](docs/scores_screenshot.jpg) |
 
 ---
 
