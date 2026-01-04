@@ -41,9 +41,11 @@
 
 ## 📸 Screenshots
 
-| Menu Screen | Gameplay | Leaderboard |
-|:---:|:---:|:---:|
-| <img src="docs/menu_screenshot.jpg" width="200" /> | <img src="docs/game_screenshot.jpg" width="200" /> | <img src="docs/scores_screenshot.jpg" width="200" /> |
+<p align="center">
+  <img src="docs/menu_screenshot.jpg" width="32%" />
+  <img src="docs/game_screenshot.jpg" width="32%" />
+  <img src="docs/scores_screenshot.jpg" width="32%" />
+</p>
 
 ---
 
