@@ -45,8 +45,6 @@
 |:---:|:---:|:---:|
 | ![Menu](docs/menu_screenshot.jpeg) | ![Game](docs/game_screenshot.jpeg) | ![Scores](docs/scores_screenshot.jpeg) |
 
-*(Note: Replace the paths above with the actual paths to your screenshots)*
-
 ---
 
 ## 🚀 Getting Started
@@ -60,4 +58,4 @@
 
 1. **Clone the repository:**
    ```bash
-   git clone [https://github.com/YourUsername/SpaceDodgeGame.git](https://github.com/YourUsername/SpaceDodgeGame.git)
+   git clone [https://github.com/NereyaMantzur/AstroHit_Game.git](https://github.com/NereyaMantzur/AstroHit_Game.git)
