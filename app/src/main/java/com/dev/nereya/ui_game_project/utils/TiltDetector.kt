@@ -31,7 +31,7 @@ class TiltDetector(context: Context, private val axis: Int, private val tiltCall
     }
 
     private fun calculateTilt(x: Float, y: Float) {
-        if (System.currentTimeMillis() - timestamp >= 500) {
+        if (System.currentTimeMillis() - timestamp >= 200) {
 
             if (axis == 0) {
                 if (x > 3.0) {
@@ -58,7 +58,7 @@ class TiltDetector(context: Context, private val axis: Int, private val tiltCall
     }
 
     fun start() {
-        sensorManager.registerListener(sensorEventListener, sensor, SensorManager.SENSOR_DELAY_NORMAL)
+        sensorManager.registerListener(sensorEventListener, sensor, SensorManager.SENSOR_DELAY_GAME)
     }
 
     fun stop() {
